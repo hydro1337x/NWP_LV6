@@ -7,5 +7,7 @@ var blobSchema = new mongoose.Schema({
     start: Date,
     end: Date,
     members: [String],
+    leader: { type: Schema.Types.ObjectId, ref: 'User' },
+    isArchived: Boolean
 });
 mongoose.model('Project', blobSchema);
