@@ -5,6 +5,10 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
     nav
+      a(href='/') Home
       a(href='/projects/create') Create
-      a(href='/projects') List
+      a(href='/projects?leader=true&archive=false') Leaders list
+      a(href='/projects?leader=false&archive=false') Members list
+      a(href='/projects?leader=true&archive=true') Leaders archive
+      a(href='/projects?leader=false&archive=true') Members Archive
     block content

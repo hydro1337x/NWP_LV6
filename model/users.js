@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+
 var blobSchema = new mongoose.Schema({
     email: String,
     password: String,

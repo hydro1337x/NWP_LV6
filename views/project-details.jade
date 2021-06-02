@@ -2,24 +2,54 @@ extends layout
 
 block content
     form(action='/projects' method='post')
-        p Name:
-            input(type='text', name='name' value=project.name)
-        p Description:
-            input(type='text', name='description' value=project.description)
-        p Price:
-            input(type='number', name='price' value=project.price)
+        if isLeader
+            p Name:
+                input(type='text', name='name' value=project.name)
+            p Description:
+                input(type='text', name='description' value=project.description)
+            p Price:
+                input(type='number', name='price' value=project.price)
+            p Start date:
+                input(type='date', name='start' value=project.start)
+            p End date:
+                input(type='date', name='end' value=project.end)
         p Jobs done:
             textarea(name='jobsdone')= project.jobsdone
-        p Start:
-            input(type='date', name='start' value=project.start)
-        p End:
-            input(type='date', name='end' value=project.end)
             input(type='hidden' name='id' value=project.id)
         p
-            input(type='submit' name='submit' value='Save')
+            input(type='submit' name='submit' value='Submit')
 
-    section
-    if project.members
-        h2 Members
-        each member in project.members
-            li=member
+    if project.leader
+        section
+            h2 Leader
+            p= project.leader.name
+
+    if project.participants
+        section
+            h2 Members
+            each participant in project.members
+                li=participant.name
+
+    block content
+        form(action='/projects' method='post')
+            p Name:
+                input(type='text', name='name' value=project.name)
+            p Description:
+                input(type='text', name='description' value=project.description)
+            p Price:
+                input(type='number', name='price' value=project.price)
+            p Jobs done:
+                textarea(name='jobsdone')= project.jobsdone
+            p Start:
+                input(type='date', name='start' value=project.start)
+            p End:
+                input(type='date', name='end' value=project.end)
+                input(type='hidden' name='id' value=project.id)
+            p
+                input(type='submit' name='submit' value='Create')
+
+        section
+        if project.members
+            h2 Members
+            each member in project.members
+                li=member

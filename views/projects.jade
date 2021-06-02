@@ -6,8 +6,8 @@ block content
             th Name
             th Description
             th Price
-            th Start
-            th End
+            th Start Date
+            th End Date
             th
         each project, index in projects
             tr
@@ -17,6 +17,10 @@ block content
                 td= project.start
                 td= project.end
                 td
+                    if isLeader
+                        a(href='/projects/delete/'+project._id) Delete
+                    if isLeader
+                        a(href='/projects/add-member/'+project._id) Add member
+                    if isLeader
+                        a(href='/projects/archive/'+project._id) Archive
                     a(href='/projects/edit/'+project._id) Edit
-                    a(href='/projects/delete/'+project._id) Delete
-                    a(href='/projects/add-member/'+project._id) Add Member

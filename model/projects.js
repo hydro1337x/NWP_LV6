@@ -1,4 +1,6 @@
-var mongoose = require('mongoose');
+var mongoose = require('mongoose')
+const Schema = mongoose.Schema
+
 var blobSchema = new mongoose.Schema({
     name: String,
     description: String,
@@ -6,7 +8,7 @@ var blobSchema = new mongoose.Schema({
     jobsdone: String,
     start: Date,
     end: Date,
-    members: [String],
+    members: [{ type: Schema.Types.ObjectId, ref: 'User' }],
     leader: { type: Schema.Types.ObjectId, ref: 'User' },
     isArchived: Boolean
 });
